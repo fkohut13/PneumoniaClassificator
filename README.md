@@ -1,5 +1,5 @@
-##Overview
-This project aims to detect pneumonia using chest X-ray images. The dataset contains a total of 26,684 images with a resolution of 1024x1024 pixels. The images are categorized as follows:
+# Overview
+This project aims to detect pneumonia using chest X-ray images. The dataset contains a total of 26,684 images with a resolution of 1024x1024 pixels, gathered from the RSNA dataset. The images are categorized as follows:
 
 20,672 images without pneumonia (~77%)
 6,012 images with pneumonia (~22%)
@@ -9,15 +9,19 @@ Images are organized into folders based on their class:
 
 0: Healthy lungs
 1: Lungs with pneumonia
-Approaches for Handling Imbalanced Data
-Do nothing
-Use a weighted loss function
-Oversample the minority class
+> [!TIP]
+> Approaches for Handling Imbalanced Data
+- Do nothing
+- Use a weighted loss function
+- Oversample the minority class
+
+
 Data Storage
 The X-ray images are converted to numpy arrays. The mean and standard deviation of pixel values are computed for normalization purposes. The images are stored in respective folders according to their binary labels.
 
 Model Training
 Required Libraries:
+```
 import torch
 import torchvision
 from torchvision import transforms
@@ -28,4 +32,5 @@ from pytorch_lightning.loggers import TensorBoardLogger
 from tqdm.notebook import tqdm
 import numpy as np
 import matplotlib.pyplot as plt
+```
 This project leverages PyTorch Lightning for efficient and scalable model training, along with TensorBoard for monitoring and visualizing training progress.
