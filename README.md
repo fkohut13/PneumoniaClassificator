@@ -34,3 +34,5 @@ import numpy as np
 import matplotlib.pyplot as plt
 ```
 This project leverages PyTorch Lightning for efficient and scalable model training, along with TensorBoard for monitoring and visualizing training progress.
+
+> There are more information and detailed explanation at the jupyter notebook on each file...
