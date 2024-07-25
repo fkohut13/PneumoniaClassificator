@@ -35,4 +35,7 @@ import matplotlib.pyplot as plt
 ```
 This project leverages PyTorch Lightning for efficient and scalable model training, along with TensorBoard for monitoring and visualizing training progress.
 
+#Goal
+🔬 My ongoing goal is to develop a user-friendly interface for my pneumonia classifier using React, ensuring it is accessible to everyone. This project aims to address real-world healthcare challenges by providing an intuitive tool for detecting pneumonia from X-ray images.
+
 > There are more information and detailed explanation at the jupyter notebook on each file...
