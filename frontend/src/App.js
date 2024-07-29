@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 import Header from './header';
-import About from './about';
+import Prediction from './prediction';
+import Results from './results';
+import Footer from './footer';
 import "./App.css";
 
 function App() {
@@ -11,8 +13,10 @@ function App() {
     <div className="App">
       <Header scrollToRef={scrollToRef} />
       <body>
-      <About scrollToRef={scrollToRef} />
+      <Prediction scrollToRef={scrollToRef} />
+      <Results/>
       </body>
+      <Footer/>
     </div>
   );
 }
