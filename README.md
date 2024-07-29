@@ -3,7 +3,7 @@ This project aims to detect pneumonia using chest X-ray images. The dataset cont
 
 ## Project Structure
 - [frontend/](frontend/): Contains the React frontend application.
-- [notebooks/](notebooks/): Contains Jupyter Notebooks for data analysis and model training.
+- [backend/](backend/): Contains the Python files application for model training and preprocessing
  
 20,672 images without pneumonia (~77%)
 6,012 images with pneumonia (~22%)
