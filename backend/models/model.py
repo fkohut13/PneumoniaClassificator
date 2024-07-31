@@ -1,4 +1,17 @@
-from imports import *
+import torch
+from pathlib import Path
+import pydicom
+import numpy as np
+import cv2
+import pandas as pd
+import matplotlib.pyplot as plt
+from tqdm import tqdm
+import torchvision ##For easy model training without the for loops.
+from torchvision import transforms
+import torchmetrics
+import pytorch_lightning as pl
+from pytorch_lightning.callbacks import ModelCheckpoint
+from pytorch_lightning.loggers import TensorBoardLogger
 
 def load_file(path):
     return np.load(path).astype(np.float32)
@@ -51,7 +64,9 @@ class PneumoniaModel(pl.LightningModule):
         super().__init__()
         self.model = torchvision.models.resnet18()
         self.model.conv1 = torch.nn.Conv2d(1, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False)#Modify first conv layer from resnet18
-        self.model.fc = torch.nn.Linear(in_features=512, out_features=1, bias=True)#Modify fully connected layer from resnet18
+        self.model.fc = torch.nn.Linear(in_features=512, out_features=1)#Modify fully connected layer from resnet18
+        
+        self.feature_map = torch.nn.Sequential(*list(self.model.children())[:-2])
         
         self.optimizer = torch.optim.Adam(self.model.parameters(), lr=1e-4)
         self.loss_fn = torch.nn.BCEWithLogitsLoss(pos_weight=torch.tensor([3]))
@@ -65,8 +80,11 @@ class PneumoniaModel(pl.LightningModule):
         self.val_precision = torchmetrics.Precision()
         
     def forward(self, data):
-        pred = self.model(data)
-        return pred
+        feature_map = self.feature_map(data)
+        avg_pool_output = torch.nn.functional.adaptive_avg_pool2d(input=feature_map, output_size=(1,1))
+        avg_output_flattened = torch.flatten(avg_pool_output)
+        pred = self.model.fc(avg_output_flattened)
+        return pred, feature_map
     
     def training_step(self, batch, batch_idx):
         xray, label = batch
@@ -129,4 +147,42 @@ def Model_evaluation(Path):
     print(f"Val Precision {precision}")
     print(f"Val Recall {recall}")
     print(f"Confusion Matrix {cm}")
+
+def Predict(Path, image):
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    model = PneumoniaModel.load_from_checkpoint(Path)
+    model.eval()
+    model.to(device)
+    with torch.no_grad():
+        image = image.to(device)
+        output = model(image)
+        output = torch.sigmoid(output)
+        prediction = (output > 0.5).int().item()
+        print(f"Output: {output.item()}, Prediction: {'Pneumonia' if prediction == 1 else 'No pneumonia'}")
+
+def cam(img):
+    model = PneumoniaModel.load_from_checkpoint("weights/weights_3.ckpt", strict=False)
+    model.eval()
+    with torch.no_grad():
+        pred, features = model(img)
+    features = features.reshape((512, 49))
+    weight_params = list(model.model.fc.parameters())[0]
+    weight = weight_params[0].detach()
+    
+    cam = torch.matmul(weight, features)
+    cam_img = cam.reshape(7,7).cpu()
+    return cam_img, torch.sigmoid(pred)
+
         
+def visualize_cam(originalimg ,cam, pred):
+    cam = transforms.functional.resize(cam.unsqueeze(0), (224, 224))[0]
+    fig, axis = plt.subplots(1,1)
+    axis.imshow(originalimg, cmap="bone")
+    axis.imshow(cam, alpha=0.5, cmap="jet")
+    if (pred > 0.5):
+        plt.title("Pneumonia")
+        plt.suptitle(f'Prediction: {pred}')
+    else:
+        plt.title("Healthy")
+        plt.suptitle(f'Prediction: {pred}')
+    plt.show()
