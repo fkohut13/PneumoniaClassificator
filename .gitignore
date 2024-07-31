@@ -1,2 +1,5 @@
 node_modules/
 dataset/
+weights/
+__pycache__/
+
