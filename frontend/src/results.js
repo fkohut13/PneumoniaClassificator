@@ -1,3 +1,4 @@
+import React from "react";
 function Results() {
     const pneumoniaPercentage = 10; 
   
