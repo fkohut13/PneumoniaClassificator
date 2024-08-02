@@ -1,12 +1,15 @@
 # Overview
-This project aims to detect pneumonia using chest X-ray images. The dataset contains a total of 26,684 images with a resolution of 1024x1024 pixels, gathered from the RSNA dataset. The images are categorized as follows:
+This project aims to leverage the power of machine learning and convolutional neural networks(CNNs) to detect pneumonia in chest X-ray (thorax), scans, By utilizing advanced image processing techniques and Class Activation Mapping (CAM) to highlight affected areas. A user-friendly React frontend allows for easy x-ray images uploads, while the backend processes the images, This integration provides a seamless and efficient diagnostic tool to aid in early pneumonia detection and localization.
 
 ## Project Structure
 - [frontend/](frontend/): Contains the React frontend application.
-- [backend/](backend/): Contains the Python files application for model training and preprocessing
- 
+- [backend/](backend/): Contains the Python files application for model preprocessing, model training, x-ray preprocessing and finally the output prediction with Class activation mapping (CAM)
+
+
+## Model training
+Using the Radiological Society of North America(RSNA) Dataset, the model was trained on:
 20,672 images without pneumonia (~77%)
-6,012 images with pneumonia (~22%)
+6,012 images with pneumonia (~23%)
 To address data imbalance and accommodate hardware constraints, images are resized to 244x244 pixels. These images are then normalized and standardized (pixel values scaled to [0,1]). The dataset is divided into 24,000 images for training and 2,684 images for validation.
 
 Images are organized into folders based on their class:
