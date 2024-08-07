@@ -21,6 +21,15 @@ The images are stored in respective folders according to their binary labels:
 0: Healthy lungs
 1: Lungs with pneumonia
 
+## Application Interface
+
+![PneumoniaClassificator](https://github.com/user-attachments/assets/74c0f8d0-e5f3-431f-9555-c4d5820a7e5e)
+![PneumoniaClassificator1](https://github.com/user-attachments/assets/73528ade-73d2-4930-ae1a-b90adab062ed)
+![PneumoniaClassificator2](https://github.com/user-attachments/assets/c2474002-8f47-44c6-b1a3-7b0ecce38ac1)
+![PneumoniaClassificator3](https://github.com/user-attachments/assets/3d9746e0-0267-470e-b070-8d6c78840cd8)
+![PneumoniaClassificator4](https://github.com/user-attachments/assets/43243088-3852-403e-94ec-2d243c2ff54a)
+
+
 ## Model Evaluation
 After training the model, it is essential to thoroughly evaluate its accuracy and performance. This involves assessing how well the model can generalize to new, unseen data, which helps ensure that it is not just memorizing the training data but learning underlying patterns that can be applied to real-world scenarios. Evaluation metrics such as precision, recall, F1 score, and confusion matrix are used to provide a comprehensive understanding of the model's strengths and weaknesses.
 
@@ -29,18 +38,23 @@ After training the model, it is essential to thoroughly evaluate its accuracy an
 Programming Languages:
 
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"> 
-    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> 
+    <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/>
+
+
+
 </a> 
 <a href="https://www.python.org" target="_blank" rel="noreferrer"> 
     <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="python" width="40" height="40"/> 
 </a> 
+
 
 Frameworks and Libraries:
 
 <a href="https://flask.palletsprojects.com/" target="_blank" rel="noreferrer"> 
     <img src="https://www.vectorlogo.zone/logos/pocoo_flask/pocoo_flask-icon.svg" alt="flask" width="40" height="40"/> 
 </a> 
-<a href="https://reactjs.org/" target="_blank" rel="noreferrer"> 
+<a href="https://reactjs.org/" target="_blank"![PneumoniaClassificator1](https://github.com/user-attachments/assets/8e417bc3-45e1-4a7f-9050-015be56c69c7)
+ rel="noreferrer"> 
     <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40"/> 
 </a> 
 <a href="https://pytorch.org/" target="_blank" rel="noreferrer"> 
@@ -76,6 +90,7 @@ Markup Languages:
 <a href="https://www.w3.org/html/" target="_blank" rel="noreferrer"> 
     <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="html5" width="40" height="40"/> 
 </a>
+
 
 
 
