@@ -20,7 +20,6 @@ root.render(
   </React.StrictMode>
 );
 
-// Ensure SineWaves runs after the DOM is fully loaded and React has rendered
 window.addEventListener('load', function() {
   var waves = new SineWaves({
     el: document.getElementById('waves'),
@@ -59,7 +58,6 @@ window.addEventListener('load', function() {
    
     ],
   
-    // Called on window resize
     resizeEvent: function() {
       var gradient = this.ctx.createLinearGradient(0, 0, this.width, 0);
       gradient.addColorStop(0,"rgba(0, 180, 216, 0.7)");
@@ -72,7 +70,6 @@ window.addEventListener('load', function() {
         this.waves[index].strokeStyle = gradient;
       }
      
-      // Clean Up
       index = void 0;
       length = void 0;
       gradient = void 0;

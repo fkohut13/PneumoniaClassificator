@@ -7,18 +7,19 @@ import "./App.css";
 
 function App() {
   const scrollToRef = useRef(null);
-  const changewebstyle = useState(null);
+  const scrollToResults = useRef(null);
+  const  [response, setResponse] = useState(null)
 
   return (
     <div className="App">
       <Header scrollToRef={scrollToRef} />
       <body>
-      <Prediction scrollToRef={scrollToRef} />
-      <Results/>
+      <Prediction scrollToRef={scrollToRef} scrollToResults={scrollToResults} setResponse={setResponse} />
+      <Results scrollToResults={scrollToResults} response={response}/>
       </body>
       <Footer/>
     </div>
   );
 }
-
+ 
 export default App;

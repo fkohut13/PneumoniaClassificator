@@ -2,4 +2,6 @@ node_modules/
 dataset/
 weights/
 __pycache__/
+image/
+test/
 
