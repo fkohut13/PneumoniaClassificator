@@ -1,6 +1,9 @@
 # Overview
 This project aims to leverage the power of machine learning and convolutional neural networks(CNNs) to detect pneumonia in chest X-ray (thorax), scans, By utilizing advanced image processing techniques and Class Activation Mapping (CAM) to highlight affected areas. A user-friendly React frontend allows for easy x-ray images uploads, while the backend processes the images, This integration provides a seamless and efficient diagnostic tool to aid in early pneumonia detection and localization.
 
+# Model improvements:
+This project is still in progress, and i want to improve the model to not only classify the scan, but to also detect and segment using Mask-RCNN that extends Faster R-CNN, Mask-RCNN efficiently detects objects in an image while simultaneously generating a high-quality segmentation mask for each instance.
+
 # Why is it important?
 Pneumonia is one of the most common causes of death worldwide. It is a condition of the inflammation of the lungs, specifically in the alveoli, When an individual has pneumonia, the alveoli are filled with pus and fluid, which makes breathing painful and limits oxygen intake, according to the National Institutes of Health, pneumonia is the eighth leading cause of death and first among infectious causes of death. The mortality rate is as high as 23% for patients admitted to the intensive care unit for severe pneumonia. Therefore, early diagnosis is crucial.
 
